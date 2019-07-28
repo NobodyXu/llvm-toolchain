@@ -33,7 +33,7 @@ RUN cd /tmp/ && git clone https://github.com/rsmmr/install-clang.git
 
 COPY run_install_clang.sh /root/
 # The command below does not clean the build tree.
-RUN env -u CFLAGS -u LDFLAGS PATH=/opt/llvm/bin:$PATH /root/run_install_clang.sh
+RUN env PATH=/opt/llvm/bin:$PATH /root/run_install_clang.sh
 
 # Workaround the problem that multi-stage build cannot copy files between stages when 
 # usernamespace is enabled.
