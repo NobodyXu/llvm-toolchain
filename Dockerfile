@@ -35,12 +35,7 @@ COPY run_install_clang.sh /root/
 # The command below does not clean the build tree.
 RUN env PATH=/opt/llvm/bin:$PATH /root/run_install_clang.sh
 
-# Workaround the problem that multi-stage build cannot copy files between stages when 
-# usernamespace is enabled.
-RUN chown -R root:root /opt/llvm
-
-FROM debian:buster AS stage2-with-build-tree
-COPY --from=stage1 /opt/llvm /opt/llvm
+FROM stage1 AS stage2-with-build-tree
 COPY install-alternatives.sh /tmp/
 RUN /root/install-alternatives.sh
 
