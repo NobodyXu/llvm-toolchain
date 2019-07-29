@@ -43,7 +43,10 @@ FROM debian:buster AS stage2
 COPY --from=stage1 /opt/llvm /opt/llvm
 COPY install-alternatives.sh /tmp/
 RUN /root/install-alternatives.sh
-RUN chown -R root:root /usr/bin
+
+# Workaround the problem that multi-stage build cannot copy files between stages when
+# usernamespace is enabled.
+RUN chown -R root:root /usr/bin /opt/llvm
 
 FROM debian:buster as final
 COPY --from=stage2 / /
