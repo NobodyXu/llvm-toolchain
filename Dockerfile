@@ -48,7 +48,7 @@ RUN /root/install-alternatives.sh
 # usernamespace is enabled.
 RUN chown -R root:root /usr/bin /opt/llvm
 
-FROM debian:buster as final-with-src
+FROM debian:buster as final-with-build-tree
 COPY --from=stage2-with-build-tree / /
 ENV PATH=/opt/llvm/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 
@@ -63,5 +63,5 @@ RUN rm /tmp/install-alternatives.sh
 RUN chown -R root:root /usr/bin /opt/llvm
 
 FROM debian:buster as final-no-build-tree
-COPY --from=stage2-no-build-tree / /
+COPY --from=stage2-build-tree / /
 ENV PATH=/opt/llvm/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
