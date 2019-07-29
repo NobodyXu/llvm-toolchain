@@ -37,7 +37,7 @@ RUN env PATH=/opt/llvm/bin:$PATH /root/run_install_clang.sh
 
 FROM stage1 AS stage2-with-build-tree
 COPY install-alternatives.sh /tmp/
-RUN /root/install-alternatives.sh
+RUN /tmp/install-alternatives.sh
 
 # Workaround the problem that multi-stage build cannot copy files between stages when
 # usernamespace is enabled.
