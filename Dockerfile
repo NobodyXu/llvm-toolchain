@@ -41,5 +41,10 @@ RUN chown -R root:root /opt/llvm
 
 FROM debian:buster AS stage2
 COPY --from=stage1 /opt/llvm /opt/llvm
-RUN update-alternatives --install /usr/bin/clang clang /opt/llvm/bin/clang 10
-RUN update-alternatives --install /usr/bin/lldb lldb /opt/llvm/bin/clang 10
+COPY install-alternatives.sh /tmp/
+RUN /root/install-alternatives.sh
+RUN chown -R root:root /usr/bin
+
+FROM debian:buster as final
+COPY --from=stage2 / /
+ENV PATH=/opt/llvm/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
