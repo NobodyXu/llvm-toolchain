@@ -39,7 +39,7 @@ RUN env PATH=/opt/llvm/bin:$PATH /root/run_install_clang.sh
 # usernamespace is enabled.
 RUN chown -R root:root /opt/llvm
 
-FROM debian:buster AS stage2
+FROM debian:buster AS stage2-with-build-tree
 COPY --from=stage1 /opt/llvm /opt/llvm
 COPY install-alternatives.sh /tmp/
 RUN /root/install-alternatives.sh
@@ -48,6 +48,20 @@ RUN /root/install-alternatives.sh
 # usernamespace is enabled.
 RUN chown -R root:root /usr/bin /opt/llvm
 
-FROM debian:buster as final
-COPY --from=stage2 / /
+FROM debian:buster as final-with-src
+COPY --from=stage2-with-build-tree / /
+ENV PATH=/opt/llvm/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+FROM stage1 AS stage2-with-no-build-tree
+RUN rm -r /opt/llvm/src
+COPY install-alternatives.sh /tmp/
+RUN /tmp/install-alternatives.sh
+RUN rm /tmp/install-alternatives.sh
+
+# Workaround the problem that multi-stage build cannot copy files between stages when
+# usernamespace is enabled.
+RUN chown -R root:root /usr/bin /opt/llvm
+
+FROM debian:buster as final-no-build-tree
+COPY --from=stage2-no-build-tree / /
 ENV PATH=/opt/llvm/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
