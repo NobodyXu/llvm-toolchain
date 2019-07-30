@@ -16,7 +16,7 @@ RUN /tmp/detect-apt-proxy.sh ${APT_PROXY_PORT}
 RUN apt-get update && apt-get dist-upgrade -y
 
 # Install basic softwares
-RUN apt-get install -y --no-install-recommends build-essential perl cmake git curl apt-utils
+RUN apt-get install -y --no-install-recommends build-essential perl cmake git curl apt-utils ca-certificates
 
 # Add git proxy 
 RUN /tmp/detect-apt-proxy.sh "" ${GIT_PROXY_PORT}
