@@ -10,4 +10,4 @@ git() {
     done
 }
 
-source /tmp/install-clang/install-clang -j $(nproc) /opt/llvm
+source /tmp/install-clang/install-clang -j $(nproc) -s 1 /opt/llvm
