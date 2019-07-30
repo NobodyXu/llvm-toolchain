@@ -37,7 +37,7 @@ COPY run_install_clang.sh /tmp/
 RUN env PATH=/opt/llvm/bin:$PATH /tmp/run_install_clang.sh
 
 # Run stage 1 only.
-RUN /tmp/install-clang/install-clang -c -stage 1 /opt/llvm
+RUN /tmp/install-clang/install-clang -c -O 1 /opt/llvm
 
 # Workaround the problem that multi-stage build cannot copy files between stages when
 # usernamespace is enabled.

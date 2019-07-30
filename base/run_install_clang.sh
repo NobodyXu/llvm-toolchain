@@ -10,4 +10,4 @@ git() {
     done
 }
 
-source /tmp/install-clang/install-clang -cl /opt/llvm
+source /tmp/install-clang/install-clang -D /opt/llvm
