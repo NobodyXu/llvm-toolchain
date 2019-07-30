@@ -1,7 +1,10 @@
-.PHONY: build no-build-tree with-build-tree stage1 run
+.PHONY: build no-build-tree with-build-tree stage1 base run
 build: with-build-tree
 
-stage1:
+base:
+	docker build base --tag="nobodyxu/llvm-toolchain:base"
+
+stage1: base
 	docker build stage1 --tag="nobodyxu/llvm-toolchain:stage1"
 
 no-build-tree: stage1
