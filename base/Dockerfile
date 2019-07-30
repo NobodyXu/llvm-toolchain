@@ -29,7 +29,7 @@ RUN apt-get install -y --no-install-recommends python libncurses5-dev libedit-de
 RUN apt-get install -y --no-install-recommends clang
 
 ## Clone repository for auto building llvm
-RUN cd /tmp/ && git clone https://github.com/rsmmr/install-clang.git
+RUN cd /tmp/ && git clone https://github.com/NobodyXu/install-clang.git
 
 COPY run_install_clang.sh /tmp/
 
