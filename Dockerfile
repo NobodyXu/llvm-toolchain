@@ -10,8 +10,8 @@ ENV DEBIAN_FRONTEND=noninteractive
 ARG APT_PROXY_PORT=8000
 ARG GIT_PROXY_PORT=8080
 
-COPY detect-apt-proxy.sh /root
-RUN /root/detect-apt-proxy.sh ${APT_PROXY_PORT}
+COPY detect-apt-proxy.sh /tmp
+RUN /tmp/detect-apt-proxy.sh ${APT_PROXY_PORT}
 
 RUN apt-get update && apt-get dist-upgrade -y
 
@@ -19,7 +19,7 @@ RUN apt-get update && apt-get dist-upgrade -y
 RUN apt-get install -y --no-install-recommends build-essential perl cmake git curl apt-utils
 
 # Add git proxy 
-RUN /root/detect-apt-proxy.sh "" ${GIT_PROXY_PORT}
+RUN /tmp/detect-apt-proxy.sh "" ${GIT_PROXY_PORT}
 
 # Install llvm softwares
 ## First install dependencies for building clang
@@ -31,9 +31,9 @@ RUN apt-get install -y --no-install-recommends clang
 ## Clone repository for auto building llvm
 RUN cd /tmp/ && git clone https://github.com/rsmmr/install-clang.git
 
-COPY run_install_clang.sh /root/
+COPY run_install_clang.sh /tmp/
 # The command below does not clean the build tree.
-RUN env PATH=/opt/llvm/bin:$PATH /root/run_install_clang.sh
+RUN env PATH=/opt/llvm/bin:$PATH /tmp/run_install_clang.sh
 
 # Workaround the problem that multi-stage build cannot copy files between stages when
 # usernamespace is enabled.
@@ -55,7 +55,6 @@ RUN apt-get purge -y build-essential perl cmake git curl apt-utils python libncu
 COPY remove-proxy.sh /tmp/
 
 # Remove all scripts and apt-get cache
-RUN rm /root/install-alternatives.sh
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Workaround the problem that multi-stage build cannot copy files between stages when
