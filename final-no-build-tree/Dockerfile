@@ -18,6 +18,9 @@ COPY remove-proxy.sh /tmp/
 # Remove all scripts and apt-get cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
+# Use the command to fix broken alternatives, if any
+RUN update-alternatives --all
+
 # Workaround the problem that multi-stage build cannot copy files between stages when
 # usernamespace is enabled.
 RUN chown -R root:root /usr/bin /opt/llvm
