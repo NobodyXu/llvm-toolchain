@@ -43,4 +43,4 @@ COPY run_install_clang.sh /tmp/
 RUN env PATH=/opt/llvm/bin:$PATH /tmp/run_install_clang.sh
 
 # Run stage 1 only.
-RUN /tmp/install-clang/install-clang -c -O 1 /opt/llvm
+RUN /tmp/run_install_clang.sh -c -O 1 /opt/llvm
