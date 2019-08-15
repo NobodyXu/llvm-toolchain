@@ -1,7 +1,5 @@
 #!/usr/bin/env bash
 
-echo $([ -n "${APT_PROXY_HOST}" ] && echo "--build-arg=APT_PROXY_HOST=${APT_PROXY_HOST}") \
-
 exec docker build base --tag="nobodyxu/llvm-toolchain:base" \
 	               $(${NO_APT_PROXY} && echo "--build-arg APT_PROXY_PORT=''") \
 	               $([ -n "${APT_PROXY_HOST}" ] && echo "--build-arg=APT_PROXY_HOST=${APT_PROXY_HOST}") \
