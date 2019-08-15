@@ -1,4 +1,4 @@
-FROM base AS stage1
+FROM nobodyxu/llvm-toolchain:base AS stage1
 
 # Run stage 2 only.
 RUN /tmp/run_install_clang.sh -c -O 2 /opt/llvm
