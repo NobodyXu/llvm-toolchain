@@ -7,10 +7,14 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 ## When installed using `apt install squid-deb-proxy`, it listens on port 8000 on the host by dfault.
 ## Override this variable with "" can disable apt proxy.
-ARG APT_PROXY_PORT=8000
-ARG APT_PROXY_HOST=""
-ARG GIT_PROXY_PORT=8080
-ARG GIT_PROXY_HOST=""
+#ARG APT_PROXY_PORT=8000
+#ARG APT_PROXY_HOST=""
+#ARG GIT_PROXY_PORT=8080
+#ARG GIT_PROXY_HOST=""
+ARG APT_PROXY_PORT
+ARG APT_PROXY_HOST
+ARG GIT_PROXY_PORT
+ARG GIT_PROXY_HOST
 
 COPY detect-apt-proxy.sh /tmp
 RUN /tmp/detect-apt-proxy.sh ${APT_PROXY_HOST} ${APT_PROXY_PORT} "" ""
