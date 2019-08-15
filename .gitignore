@@ -1,0 +1,5 @@
+# Allow locally cloned repository to save files without worrying about being overwriten or mistakenly commited
+# This is usefull for like:
+#     for-local-clone.build
+#         when contains `make APT_PROXY_HOST=192.168.9.223 GIT_PROXY_HOST=192.168.9.223`
+for-local-clone.*
