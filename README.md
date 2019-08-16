@@ -1,2 +1,2 @@
 # llvm-toolchain
-Docker image contains llvm tool chains in /opt/llvm.
+Docker image contains llvm toolchains in /opt/llvm.
