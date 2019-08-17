@@ -14,6 +14,7 @@ RUN apt-get autoremove -y
 
 # Remove all proxy
 COPY remove-proxy.sh /tmp/
+RUN /tmp/remove-proxy.sh
 
 # Remove all scripts and apt-get cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
