@@ -5,9 +5,7 @@ cd llvm-toolchain
 git checkout ${1}
 git merge --ff-only master
 
-# Set up user, email and passwd
-git config --local user.name "$GITHUB_ROBOT_USER"
-git config --local user.email "$GITHUB_ROBOT_EMAIL"
+# Set up username and passwd
 git config --local push.default simple
 
 git config --local credential.helper store
