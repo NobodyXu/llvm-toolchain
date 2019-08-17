@@ -1,6 +1,7 @@
 #!/bin/bash -x
 
 git clone https://github.com/NobodyXu/llvm-toolchain.git
+cd llvm-toolchain
 git checkout ${1}
 git merge --ff-only master
 
