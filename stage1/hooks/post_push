@@ -1,3 +1,4 @@
 #!/bin/bash -x
 
+curl -O https://raw.githubusercontent.com/NobodyXu/llvm-toolchain/master/run_dependents.sh
 source ./run_dependents.sh docker-tag-latest
