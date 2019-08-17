@@ -21,7 +21,7 @@ RUN /tmp/detect-apt-proxy.sh ${APT_PROXY_HOST} ${APT_PROXY_PORT} "" ""
 RUN apt-get update && apt-get dist-upgrade -y
 
 # Install basic softwares
-RUN apt-get install -y --no-install-recommends build-essential perl cmake git curl apt-utils ca-certificates
+RUN apt-get install -y --no-install-recommends build-essential perl cmake git curl apt-utils ca-certificates ninja-build
 
 # Add git proxy 
 RUN /tmp/detect-apt-proxy.sh "" "" ${GIT_PROXY_HOST} ${GIT_PROXY_PORT}
@@ -42,4 +42,4 @@ COPY run_install_clang.sh /tmp/
 RUN env PATH=/opt/llvm/bin:$PATH /tmp/run_install_clang.sh -D $([ -z `ls /opt/llvm/src` ] || echo "-c")
 
 # Run stage 1 only.
-RUN /tmp/run_install_clang.sh -c -O 1 /opt/llvm
+RUN /tmp/run_install_clang.sh -c -O 1
