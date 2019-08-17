@@ -12,4 +12,4 @@ git config --global push.default simple
 git config --local credential.helper store
 echo "https://${GITHUB_ROBOT_USER}:${GITHUB_ROBOT_ACCESS_TOKEN}@github.com" > ~/.git-credentials
 
-exec git push
+exec git push origin HEAD
