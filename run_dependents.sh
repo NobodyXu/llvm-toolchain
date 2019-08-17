@@ -5,6 +5,7 @@ cd llvm-toolchain
 git checkout ${1}
 git merge --ff-only master
 
+# Set push.default for push
 git config --local push.default simple
 
 # Set up username and passwd
