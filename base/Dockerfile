@@ -1,7 +1,7 @@
 FROM nobodyxu/llvm-toolchain:dev AS previous_dev
 FROM debian:buster AS base
 
-COPY --from=previous_dev /opt/llvm/ /opt/llvm/
+COPY --from=previous_dev /opt/llvm/src /opt/llvm/src
 
 # Add apt cache
 # This code is adapted from:
@@ -39,7 +39,7 @@ RUN cd /tmp/ && git clone https://github.com/NobodyXu/install-clang.git
 COPY run_install_clang.sh /tmp/
 
 # The command below does not clean the build tree. It only clones the llvm mirror.
-RUN env PATH=/opt/llvm/bin:$PATH /tmp/run_install_clang.sh -D $([ -d "/opt/llvm/src" ] && echo "-c")
+RUN env PATH=/opt/llvm/bin:$PATH /tmp/run_install_clang.sh -D $([ -z `ls /opt/llvm/src` ] || echo "-c")
 
 # Run stage 1 only.
 RUN /tmp/run_install_clang.sh -c -O 1 /opt/llvm
