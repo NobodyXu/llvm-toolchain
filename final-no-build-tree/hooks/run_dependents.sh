@@ -2,7 +2,7 @@
 
 git clone https://github.com/NobodyXu/llvm-toolchain.git
 git checkout ${1}
-git merge -ff-only master
+git merge --ff-only master
 
 # Set up user, email and passwd
 git config --local user.name "$GITHUB_ROBOT_USER"
