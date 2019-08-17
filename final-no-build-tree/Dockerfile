@@ -1,9 +1,5 @@
 FROM nobodyxu/llvm-toolchain:stage1 AS stage2-no-build-tree
 
-# Install symbolic links by update-alternatives
-COPY install-alternatives.sh /tmp/
-RUN /tmp/install-alternatives.sh
-
 # Remove build tree
 RUN rm -r /opt/llvm/src
 
@@ -16,11 +12,12 @@ RUN apt-get autoremove -y
 COPY remove-proxy.sh /tmp/
 RUN /tmp/remove-proxy.sh
 
+# Install symbolic links by update-alternatives
+COPY install-alternatives.sh /tmp/
+RUN /tmp/install-alternatives.sh
+
 # Remove all scripts and apt-get cache
 RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
-
-# Use the command to fix broken alternatives, if any
-RUN update-alternatives --all
 
 # Workaround the problem that multi-stage build cannot copy files between stages when
 # usernamespace is enabled.
