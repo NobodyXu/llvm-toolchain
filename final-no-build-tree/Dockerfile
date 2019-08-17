@@ -5,7 +5,7 @@ RUN rm -r /opt/llvm/src
 
 # Remove all installed softwares
 RUN apt-get purge -y build-essential perl cmake git curl apt-utils python libncurses5-dev libedit-dev libpthread-stubs0-dev clang \
-                     ca-certificates
+                     ca-certificates ninja-build
 RUN apt-get autoremove -y
 
 # Remove all proxy

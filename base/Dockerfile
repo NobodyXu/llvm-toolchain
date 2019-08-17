@@ -42,4 +42,4 @@ COPY run_install_clang.sh /tmp/
 RUN env PATH=/opt/llvm/bin:$PATH /tmp/run_install_clang.sh -D $([ -z `ls /opt/llvm/src` ] || echo "-c")
 
 # Run stage 1 only.
-RUN /tmp/run_install_clang.sh -c -O 1
+RUN /tmp/run_install_clang.sh -c -O 1 -G Ninja
