@@ -9,6 +9,7 @@ APT_PROXY_HOST=$1
 APT_PROXY_PORT=$2
 
 [ -z "$APT_PROXY_HOST" ] && APT_PROXY_HOST="$HOST_IP"
+[ -z "$APT_PROXY_PORT" ] && APT_PROXY_PORT="8000"
 
 # The third condition testing command automatically test whether ${APT_PROXY_PORT} on ${HOST_IP} is open.
 # It is adapted from:
@@ -30,6 +31,7 @@ GIT_PROXY_HOST="$3"
 GIT_PROXY_PORT="$4"
 
 [ -z "$GIT_PROXY_HOST" ] && GIT_PROXY_HOST="$HOST_IP"
+[ -z "$GIT_PROXY_PORT" ] && GIT_PROXY_PORT="8080"
 
 if [[ ! -z "$GIT_PROXY_PORT" ]] && [[ ! -z "$GIT_PROXY_HOST" ]] && (echo >"/dev/tcp/${GIT_PROXY_HOST}/${GIT_PROXY_PORT}") &>/dev/null; then
     git config --global url."http://$GIT_PROXY_HOST:$GIT_PROXY_PORT/".insteadOf https://
