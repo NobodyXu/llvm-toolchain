@@ -1,5 +1,5 @@
-.PHONY: build no-build-tree with-build-tree stage1 base run
-build: with-build-tree
+.PHONY: build dev latest stage1 base run
+build: dev
 
 base:
 	./build_base.sh
