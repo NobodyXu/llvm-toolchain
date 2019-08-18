@@ -10,7 +10,7 @@ stage1: base
 latest: stage1
 	./build-with-optional-workaround.sh final-no-build-tree latest
 
-dev: no-build-tree
+dev: latest
 	./build-with-optional-workaround.sh final-with-build-tree dev
 
 SHELL: /bin/bash
