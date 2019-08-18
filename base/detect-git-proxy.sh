@@ -3,8 +3,6 @@
 # https://github.com/sameersbn/docker-apt-cacher-ng
 # https://gist.github.com/dergachev/8441335
 
-HOST_IP=
-
 # The following code add git proxy
 # It is writen by nobodyxu
 GIT_PROXY_HOST="$3"

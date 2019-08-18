@@ -3,8 +3,6 @@
 # https://github.com/sameersbn/docker-apt-cacher-ng
 # https://gist.github.com/dergachev/8441335
 
-HOST_IP=
-
 APT_PROXY_HOST=$1
 APT_PROXY_PORT=$2
 
