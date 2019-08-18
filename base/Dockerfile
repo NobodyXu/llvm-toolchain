@@ -16,7 +16,8 @@ ARG GIT_PROXY_PORT
 ARG GIT_PROXY_HOST
 
 COPY detect-apt-proxy.sh /tmp
-RUN /tmp/detect-apt-proxy.sh ${APT_PROXY_HOST} ${APT_PROXY_PORT} "" ""
+COPY detect-git-proxy.sh /tmp
+RUN /tmp/detect-apt-proxy.sh ${APT_PROXY_HOST} ${APT_PROXY_PORT}
 
 RUN apt-get update && apt-get dist-upgrade -y
 
@@ -24,7 +25,7 @@ RUN apt-get update && apt-get dist-upgrade -y
 RUN apt-get install -y --no-install-recommends build-essential perl cmake git curl apt-utils ca-certificates ninja-build
 
 # Add git proxy 
-RUN /tmp/detect-apt-proxy.sh "" "" ${GIT_PROXY_HOST} ${GIT_PROXY_PORT}
+RUN /tmp/detect-git-proxy.sh ${GIT_PROXY_HOST} ${GIT_PROXY_PORT}
 
 # Install llvm softwares
 ## First install dependencies for building clang

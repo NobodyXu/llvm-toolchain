@@ -24,17 +24,3 @@ EOL
 else
     echo "No squid-deb-proxy detected on docker host"
 fi
-
-# The following code add git proxy
-# It is writen by nobodyxu
-GIT_PROXY_HOST="$3"
-GIT_PROXY_PORT="$4"
-
-[ -z "$GIT_PROXY_HOST" ] && GIT_PROXY_HOST="$HOST_IP"
-[ -z "$GIT_PROXY_PORT" ] && GIT_PROXY_PORT="8080"
-
-if [[ ! -z "$GIT_PROXY_PORT" ]] && [[ ! -z "$GIT_PROXY_HOST" ]] && (echo >"/dev/tcp/${GIT_PROXY_HOST}/${GIT_PROXY_PORT}") &>/dev/null; then
-    git config --global url."http://$GIT_PROXY_HOST:$GIT_PROXY_PORT/".insteadOf https://
-    # Since my git cache use core.compression 9, I using the same level here.
-    git config --global core.compression 9
-fi
