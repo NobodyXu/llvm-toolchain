@@ -24,7 +24,8 @@ RUN apt-get update && apt-get dist-upgrade -y
 # Install dependencies
 RUN apt-get install -y --no-install-recommends \
                     build-essential perl cmake git curl apt-utils ca-certificates ninja-build \
-                    python libncurses5-dev libedit-dev libpthread-stubs0-dev clang\
+                    python libncurses5-dev libedit-dev libpthread-stubs0-dev clang
+
 # Add git proxy 
 RUN /tmp/detect-git-proxy.sh ${GIT_PROXY_HOST} ${GIT_PROXY_PORT}
 
