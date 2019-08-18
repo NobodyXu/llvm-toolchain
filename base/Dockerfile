@@ -21,18 +21,12 @@ RUN /tmp/detect-apt-proxy.sh ${APT_PROXY_HOST} ${APT_PROXY_PORT}
 
 RUN apt-get update && apt-get dist-upgrade -y
 
-# Install basic softwares
-RUN apt-get install -y --no-install-recommends build-essential perl cmake git curl apt-utils ca-certificates ninja-build
-
+# Install dependencies
+RUN apt-get install -y --no-install-recommends \
+                    build-essential perl cmake git curl apt-utils ca-certificates ninja-build \
+                    python libncurses5-dev libedit-dev libpthread-stubs0-dev clang\
 # Add git proxy 
 RUN /tmp/detect-git-proxy.sh ${GIT_PROXY_HOST} ${GIT_PROXY_PORT}
-
-# Install llvm softwares
-## First install dependencies for building clang
-RUN apt-get install -y --no-install-recommends python libncurses5-dev libedit-dev libpthread-stubs0-dev
-
-## Also clang for self lifting
-RUN apt-get install -y --no-install-recommends clang
 
 ## Clone repository for auto building llvm
 RUN cd /tmp/ && git clone https://github.com/NobodyXu/install-clang.git
