@@ -8,9 +8,9 @@ stage1: base
 	docker build stage1 --tag="nobodyxu/llvm-toolchain:stage1"
 
 no-build-tree: stage1
-	docker build final-no-build-tree --tag="nobodyxu/llvm-toolchain:latest"
+	./build-with-optional-workaround.sh final-no-build-tree latest
 
 with-build-tree: no-build-tree
-	docker build final-with-build-tree --tag="nobodyxu/llvm-toolchain:dev"
+	./build-with-optional-workaround.sh final-with-build-tree dev
 
 SHELL: /bin/bash

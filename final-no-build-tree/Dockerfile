@@ -1,5 +1,7 @@
 FROM nobodyxu/llvm-toolchain:stage1 AS stage2-no-build-tree
 
+ARG need_userns_workaround=false
+
 # Remove build tree
 RUN rm -r /opt/llvm/src
 
@@ -21,7 +23,7 @@ RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
 
 # Workaround the problem that multi-stage build cannot copy files between stages when
 # usernamespace is enabled.
-RUN chown -R root:root /usr/bin /opt/llvm
+RUN ${need_userns_workaround} && chown -R root:root /usr/bin /opt/llvm || echo true
 
 FROM debian:buster as final-no-build-tree
 COPY --from=stage2-no-build-tree / /
