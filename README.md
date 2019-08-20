@@ -4,6 +4,7 @@
 ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/nobodyxu/llvm-toolchain)
 
 nobodyxu/llvm-toolchain:latest ![nobodyxu/llvm-toolchain:latest size](https://img.shields.io/microbadger/image-size/nobodyxu/llvm-toolchain/latest)
+
 nobodyxu/llvm-toolchain:dev ![nobodyxu/llvm-toolchain:dev size](https://img.shields.io/microbadger/image-size/nobodyxu/llvm-toolchain/dev)
 
 Docker image contains llvm toolchains in `/opt/llvm`.
