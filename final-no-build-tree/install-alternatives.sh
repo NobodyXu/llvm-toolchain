@@ -1,5 +1,7 @@
 #!/usr/bin/env sh
 
+update-alternatives --install /usr/bin/cc cc /opt/llvm/bin/clang 10
+update-alternatives --install /usr/bin/c++ c++ /opt/llvm/bin/clang++ 10
 update-alternatives --install /usr/bin/ld ld /opt/llvm/bin/ld.lld 10
 update-alternatives --install /usr/bin/ar ar /opt/llvm/bin/llvm-ar 10
 update-alternatives --install /usr/bin/as as /opt/llvm/bin/llvm-as 10
