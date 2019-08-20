@@ -27,4 +27,4 @@ RUN ${need_userns_workaround} && chown -R root:root /usr/bin /opt/llvm || echo t
 
 FROM debian:buster as final-no-build-tree
 COPY --from=stage2-no-build-tree / /
-ENV PATH=/opt/llvm/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+ENV PATH=/opt/llvm/bin/:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin CC=clang CXX=clang++
