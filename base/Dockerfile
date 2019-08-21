@@ -19,10 +19,9 @@ COPY detect-apt-proxy.sh /tmp
 COPY detect-git-proxy.sh /tmp
 RUN /tmp/detect-apt-proxy.sh ${APT_PROXY_HOST} ${APT_PROXY_PORT}
 
-RUN apt-get update && apt-get dist-upgrade -y
-
 # Install dependencies
-RUN apt-get install -y --no-install-recommends \
+RUN apt-get update && apt-get dist-upgrade -y && \
+    apt-get install -y --no-install-recommends \
                     build-essential perl cmake git curl apt-utils ca-certificates ninja-build \
                     python libncurses5-dev libedit-dev libpthread-stubs0-dev clang
 
