@@ -1,4 +1,5 @@
 FROM nobodyxu/llvm-toolchain:stage1 AS stage1
+RUN rm -rf /opt/llvm/src/llvm/build-stage1
 
 ARG need_userns_workaround=false
 
