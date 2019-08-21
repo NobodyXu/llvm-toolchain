@@ -5,7 +5,7 @@ ARG need_userns_workaround=false
 # Remove build tree
 RUN rm -r /opt/llvm/src
 
-# Remove all installed softwares
+# Remove all installed softwares that does not affect llvm
 RUN apt-get purge -y build-essential perl cmake git curl apt-utils python libncurses5-dev libedit-dev libpthread-stubs0-dev clang \
                      ca-certificates ninja-build
 RUN apt-get autoremove -y
