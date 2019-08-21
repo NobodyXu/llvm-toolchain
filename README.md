@@ -28,6 +28,10 @@ During the build, the port `8000` and `8080` is being checked for accessibility.
  - To specify a different host, pass environment variable `APT_PROXY_HOST` and `GIT_PROXY_HOST` respectively when invoking `make`.
  - To use no proxy, pass environment variable `NO_APT_PROXY` and `NO_GIT_PROXY` respectively when invoking `make`.
 
+# Credit
+
+This repository use [NobodyXu/install-clang](https://github.com/NobodyXu/install-clang) which is forked from [rsmmr/install-clang](https://github.com/rsmmr/install-clang).
+
 # Request for more features
 
 Simply open a issue in the github repository [NobodyXu/llvm-toolchain](https://github.com/NobodyXu/llvm-toolchain) and I will respond to that as soon as possible.
