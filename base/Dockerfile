@@ -23,7 +23,7 @@ RUN /tmp/detect-apt-proxy.sh ${APT_PROXY_HOST} ${APT_PROXY_PORT}
 RUN apt-get update && apt-get dist-upgrade -y && \
     apt-get install -y --no-install-recommends \
                     build-essential perl cmake git curl apt-utils ca-certificates ninja-build \
-                    python libncurses5-dev libedit-dev libpthread-stubs0-dev clang
+                    python libncurses5-dev libedit-dev libpthread-stubs0-dev clang zlib1g-dev
 
 # Add git proxy 
 RUN /tmp/detect-git-proxy.sh ${GIT_PROXY_HOST} ${GIT_PROXY_PORT}
