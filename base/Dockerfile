@@ -35,7 +35,7 @@ RUN cd /tmp/ && git clone https://github.com/NobodyXu/install-clang.git
 COPY run_install_clang.sh /tmp/
 
 # The command below does not clean the build tree. It only clones the llvm mirror.
-RUN env PATH=/opt/llvm/bin:$PATH /tmp/run_install_clang.sh -D $([ -z `ls /opt/llvm/src` ] || echo "-c")
+RUN cd /tmp/ && env PATH=/opt/llvm/bin:$PATH ./run_install_clang.sh -D $([ -z `ls /opt/llvm/src` ] || echo "-c")
 
 # Run stage 1 only.
-RUN /tmp/run_install_clang.sh -c -O 1 -G Ninja
+RUN cd /tmp/ && ./run_install_clang.sh -c -O 1 -G Ninja
