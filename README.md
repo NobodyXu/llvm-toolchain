@@ -7,8 +7,10 @@ Docker image contains llvm toolchains in `/opt/llvm`.
 
 # tags available
 
- - tag `latest` contains the latest stable llvm toolchain (currently llvm 8) under `/opt/llvm/`. ![nobodyxu/llvm-toolchain:latest size](https://img.shields.io/microbadger/image-size/nobodyxu/llvm-toolchain/latest)
- - tag `dev` contains not only the llvm toolchain, but also the build tree for it. ![nobodyxu/llvm-toolchain:dev size](https://img.shields.io/microbadger/image-size/nobodyxu/llvm-toolchain/dev)
+ - tag `latest` contains the latest stable llvm toolchain (currently llvm 8) under `/opt/llvm/`.
+ ![nobodyxu/llvm-toolchain:latest size](https://img.shields.io/microbadger/image-size/nobodyxu/llvm-toolchain/latest)
+ - tag `dev` contains not only the llvm toolchain, but also the build tree for it.
+ ![nobodyxu/llvm-toolchain:dev size](https://img.shields.io/microbadger/image-size/nobodyxu/llvm-toolchain/dev)
 
 To pull the image, use `docker pull nobodyxu/llvm-toolchain:tag`.
 
