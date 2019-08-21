@@ -21,7 +21,7 @@ To pull the image, use `docker pull nobodyxu/llvm-toolchain:tag`.
 To build it on your only computer that is not `x86_64` architecture, you need to run
 
 ```
-echo -e "FROM debian:buster\nRUN mkdir -p /opt/llvm/src" | docker build -f - --tag=nobodyxu/llvm-toolchain:dev
+echo -e "FROM debian:buster\nRUN mkdir -p /opt/llvm/src" | docker build -f - --tag=nobodyxu/llvm-toolchain:stage1
 ```
 
 before running `make` (a technique to save compilation time by reusing previous build).
