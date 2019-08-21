@@ -1,7 +1,7 @@
-FROM nobodyxu/llvm-toolchain:dev AS previous_dev
+FROM nobodyxu/llvm-toolchain:stage1 AS previous_stage1
 FROM debian:buster AS base
 
-COPY --from=previous_dev /opt/llvm/src /opt/llvm/src
+COPY --from=previous_stage1 /opt/llvm/src /opt/llvm/src
 
 # Add apt cache
 # This code is adapted from:
