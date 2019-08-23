@@ -7,7 +7,7 @@ ARG need_userns_workaround=false
 
 # Workaround the problem that multi-stage build cannot copy files between stages when
 # usernamespace is enabled.
-RUN ${need_userns_workaround} && chown -R root:root /usr/bin /root/llvm || echo true
+RUN ${need_userns_workaround} && chown -R root:root /root/llvm || echo true
 
 FROM nobodyxu/llvm-toolchain:latest AS final-with-build-tree
 COPY --from=stage1 /root/llvm/src /opt/llvm/src
