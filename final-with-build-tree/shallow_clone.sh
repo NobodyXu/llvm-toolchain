@@ -18,4 +18,8 @@ local_clone tools/clang/tools/extra
 local_clone tools/lldb
 local_clone tools/lld
 
-mv ${src}/build-stage2 ${dst}/build-stage2
+cp -r ${src}/* ${dst}
+rm ${dst}/build-stage1
+
+cd ${dst}
+exec find -exec touch {} +
