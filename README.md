@@ -3,7 +3,18 @@
 ![Docker Cloud Automated build](https://img.shields.io/docker/cloud/automated/nobodyxu/llvm-toolchain)
 ![Docker Cloud Build Status](https://img.shields.io/docker/cloud/build/nobodyxu/llvm-toolchain)
 
-Docker image contains llvm toolchains in `/opt/llvm`.
+Docker image contains llvm toolchains including
+
+ - llvm core
+ - libcxx
+ - libcxxabi
+ - compiler-rt
+ - clang
+ - clang-extra
+ - lld
+ - lldb
+
+in `/opt/llvm`.
 
 # tags available
 
