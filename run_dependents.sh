@@ -2,9 +2,11 @@
 
 git clone https://github.com/NobodyXu/llvm-toolchain.git
 cd llvm-toolchain
-git checkout ${1}
 
-if ! git diff --quiet master ${1}; then
+# Test whether master is ahead of the branch ${1}
+if [ "$(git rev-list --left-right --count origin/master...origin/${1} | cut -f 1)" != 0 ]; then
+    
+    git checkout ${1}
     git merge --ff-only master
     
     # Set push.default for push
