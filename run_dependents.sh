@@ -4,6 +4,8 @@ git clone https://github.com/NobodyXu/llvm-toolchain.git
 cd llvm-toolchain
 
 # Test whether master is ahead of the branch ${1}
+# This is learnt from:
+#     https://stackoverflow.com/a/27940027/8375400
 if [ "$(git rev-list --left-right --count origin/master...origin/${1} | cut -f 1)" != 0 ]; then
     
     git checkout ${1}
