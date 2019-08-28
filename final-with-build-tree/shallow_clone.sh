@@ -19,7 +19,7 @@ local_clone tools/lldb
 local_clone tools/lld
 
 cp -r ${src}/* ${dst}
-rm ${dst}/build-stage1
+rm -r ${dst}/build-stage1
 
 cd ${dst}
 exec find -exec touch {} +
